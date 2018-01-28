@@ -1,0 +1,57 @@
+#IntelliJ IDEA project files and directories
+*.iml
+*.ipr
+*.iws
+/.idea
+
+#Build targets
+/target
+*/target
+#Report directories
+/reports
+*/reports
+
+#Mac-specific directory that no other operating system needs.
+.DS_Store
+
+#Scala-play project files
+logs
+project/project
+project/target
+target
+tmp
+.history
+dist
+/*.iml
+/out
+/.idea_modules
+/.classpath
+/.project
+/RUNNING_PID
+/.settings
+*.log*
+*/*.log*
+dep.txt
+*.rdb
+
+application-local.*
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+*.log
+trade.iml
+trade.ipr
+trade.iws
+
+# .gitignore for maven
+target/
+
+
+
+#.gitignore
+src/test/

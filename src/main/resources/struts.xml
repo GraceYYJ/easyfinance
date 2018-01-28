@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC  
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"  
+    "http://struts.apache.org/dtds/struts-2.0.dtd">  
+<struts>
+    <constant name="struts.i18n.encoding" value="utf-8"></constant>  
+    <constant name="struts.multipart.maxSize" value="20971520"/>  
+    <constant name="struts.devMode" value="true" /> 
+    
+    
+    <package name="user"  namespace="/"  extends="struts-default,json-default">
+   		<global-results>
+   			<result name="allException">../toutiao/error.jsp</result>
+   		</global-results>
+   		<global-exception-mappings>
+   			<exception-mapping result="allException"  exception="java.lang.Exception"/>
+   		</global-exception-mappings>
+   		
+        <action name="excuteAjax"  class="com.yangyujuan.action.NewsJsonAction" method="excuteAjax">  
+            <result name="fail"></result>
+            <!-- 返回json类型数据 -->
+            <result type="json">
+                <param name="root">result<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 --></param>
+            </result>
+        </action> 
+        
+        <action name="getNewsListJson"  class="com.yangyujuan.action.NewsJsonAction" method="getNewsListJson">  
+            <result name="fail"></result>
+            <!-- 返回json类型数据 -->
+            <result type="json">
+                <param name="root">result<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 --></param>
+            </result>
+        </action> 
+        
+        <action name="getSingleNewsJson"  class="com.yangyujuan.action.NewsJsonAction" method="getSingleNewsJson">  
+            <result name="fail"></result>
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action> 
+        
+        <action name="getNewsPageCount"  class="com.yangyujuan.action.NewsJsonAction" method="getNewsPageCount">  
+            <result name="fail"></result>
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action> 
+        
+        <action name="getSearchResult"  class="com.yangyujuan.action.NewsJsonAction" method="getSearchResult">  
+            <result name="fail"></result>
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action> 
+        
+        <action name="indexSearch"  class="com.yangyujuan.action.NewsJsonAction" method="indexSearch">  
+            <result name="list">search.jsp</result>
+        </action> 
+        
+        <action name="getHotWord"  class="com.yangyujuan.action.NewsJsonAction" method="getHotWord">  
+            <result name="fail"></result>
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action> 
+        
+        <action name="updataHotWord"  class="com.yangyujuan.action.NewsJsonAction" method="updataHotWord">  
+            <result name="fail"></result>
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action> 
+        
+    </package>
+    
+    <package name="admin"  namespace="/admin"  extends="struts-default,json-default">
+    	
+   		
+    	<interceptors>
+    		<interceptor name="authority" class="com.yangyujuan.interceptor.LoginInterceptor">
+    		</interceptor>
+    	</interceptors>
+    	<global-results>
+    		<result name="error">../toutiao/adminlogin.jsp</result>
+    	</global-results>
+    
+    	<action name="adminIndex"  class="com.yangyujuan.action.AdminAction" method="adminIndex">  
+            <result name="success">/admin/index.jsp</result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <interceptor-ref name="authority"></interceptor-ref>
+        </action> 
+        
+    	<action name="modify"  class="com.yangyujuan.action.AdminAction" method="modify">  
+            <result name="success">/admin/modify.jsp</result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <interceptor-ref name="authority"></interceptor-ref>
+        </action> 
+        
+        <action name="delete"  class="com.yangyujuan.action.AdminAction" method="delete">  
+            <result name="fail"></result>
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <interceptor-ref name="authority"></interceptor-ref>
+        </action> 
+        
+        <action name="detail"  class="com.yangyujuan.action.AdminAction" method="detail">  
+            <result name="success" >/admin/detail.jsp</result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <interceptor-ref name="authority"></interceptor-ref>
+        </action> 
+        
+        
+        <action name="updateNews"  class="com.yangyujuan.action.AdminAction" method="updateNews">  
+            <result name="fail"></result>
+            <!-- 返回json类型数据 -->
+            <result type="json">
+                <param name="root">result<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 --></param>
+            </result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <interceptor-ref name="authority"></interceptor-ref>
+        </action> 
+        
+        <action name="login"  class="com.yangyujuan.action.AdminAction" method="login">  
+        	<result name="error" >../toutiao/adminlogin.jsp</result>
+            <result name="success"  type="redirectAction">adminIndex</result>
+        </action> 
+        
+        <action name="spiderIndex"  class="com.yangyujuan.action.SpiderAction" method="spiderIndex">  
+            <result name="success">/admin/spider.jsp</result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <interceptor-ref name="authority"></interceptor-ref>
+        </action> 
+        
+        <action name="startSpider"  class="com.yangyujuan.action.SpiderAction" method="startSpider">  
+            <result name="fail"></result>
+            <!-- 返回json类型数据 -->
+            <result type="json">
+                <param name="root">result<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 --></param>
+            </result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <interceptor-ref name="authority"></interceptor-ref>
+        </action> 
+        
+        <action name="modifySpider"  class="com.yangyujuan.action.SpiderAction" method="modifySpider">  
+            <result name="success">/admin/modSpider.jsp</result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <interceptor-ref name="authority"></interceptor-ref>
+        </action> 
+        
+        <action name="updateSpider"  class="com.yangyujuan.action.SpiderAction" method="updateSpider">  
+            <result name="fail"></result>
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <interceptor-ref name="authority"></interceptor-ref>
+        </action> 
+        
+        <action name="addSpider"  class="com.yangyujuan.action.SpiderAction" method="addSpider">  
+            <result name="fail"></result>
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <interceptor-ref name="authority"></interceptor-ref>
+        </action> 
+        
+        <action name="deleteSpider"  class="com.yangyujuan.action.SpiderAction" method="deleteSpider">  
+            <result name="fail"></result>
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <interceptor-ref name="authority"></interceptor-ref>
+        </action>
+        
+    </package>
+</struts>

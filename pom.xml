@@ -1,0 +1,144 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.yangding.yangyujuan</groupId>
+  <artifactId>YangyujuanV1</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>YangyujuanV1 Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+  
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>servlet-api</artifactId>
+	    <version>2.5</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>org.apache.struts</groupId>
+        <artifactId>struts2-core</artifactId>
+        <version>2.3.8</version>
+    </dependency>
+    
+    <dependency>
+	    <groupId>commons-collections</groupId>
+	    <artifactId>commons-collections</artifactId>
+	    <version>3.2.1</version>
+    </dependency>
+    
+    <dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-jdbc</artifactId>
+	    <version>3.0.4.RELEASE</version>
+    </dependency>
+    
+    <dependency>
+	    <groupId>commons-dbcp</groupId>
+	    <artifactId>commons-dbcp</artifactId>
+	    <version>1.4</version>
+     </dependency>
+     
+     <dependency>
+        <groupId>us.codecraft</groupId>
+        <artifactId>webmagic-core</artifactId>
+        <version>0.5.2</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>us.codecraft</groupId>
+        <artifactId>webmagic-extension</artifactId>
+        <version>0.5.2</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>jstl</artifactId>
+        <version>1.1.2</version>
+    </dependency>
+
+    <dependency>
+	    <groupId>taglibs</groupId>
+	    <artifactId>standard</artifactId>
+	    <version>1.1.2</version>
+    </dependency>
+
+    <dependency>
+	    <groupId>net.sf.json-lib</groupId>
+	    <artifactId>json-lib</artifactId>
+	    <version>2.4</version>
+	    <classifier>jdk15</classifier>
+    </dependency>
+    
+    <dependency>
+	    <groupId>org.apache.struts</groupId>
+	    <artifactId>struts2-json-plugin</artifactId>
+	    <version>2.1.8.1</version>
+    </dependency>
+    
+    <dependency>
+	    <groupId>org.apache.lucene</groupId>
+	    <artifactId>lucene-core</artifactId>
+	    <version>5.4.0</version>
+    </dependency>
+
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-queries</artifactId>
+			<version>5.4.0</version>
+		</dependency>
+		
+    <dependency>
+		<groupId>org.apache.lucene</groupId>
+		<artifactId>lucene-analyzers-common</artifactId>
+		<version>5.4.0</version>
+    </dependency>
+    
+    <dependency>
+		<groupId>org.apache.lucene</groupId>
+		<artifactId>lucene-queryparser</artifactId>
+		<version>5.4.0</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.apache.lucene</groupId>
+		<artifactId>lucene-test-framework</artifactId>
+		<version>5.4.0</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.apache.lucene</groupId>
+		<artifactId>lucene-highlighter</artifactId>
+		<version>5.4.0</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>com.chenlb.mmseg4j</groupId>
+		<artifactId>mmseg4j-core</artifactId>
+		<version>1.10.0</version>
+	</dependency>
+
+  </dependencies>
+  <build>
+    <finalName>YangyujuanV1</finalName>
+      <plugins>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <version>3.3</version>
+              <configuration>
+                  <source>1.7</source>
+                  <target>1.7</target>
+                  <encoding>UTF-8</encoding>
+              </configuration>
+          </plugin>
+      </plugins>
+  </build>
+</project>
