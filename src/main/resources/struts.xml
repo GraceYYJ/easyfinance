@@ -16,7 +16,7 @@
    			<exception-mapping result="allException"  exception="java.lang.Exception"/>
    		</global-exception-mappings>
    		
-        <action name="excuteAjax"  class="com.yangyujuan.action.NewsJsonAction" method="excuteAjax">  
+        <action name="excuteAjax" class="com.easy.finance.action.NewsJsonAction" method="excuteAjax">
             <result name="fail"></result>
             <!-- 返回json类型数据 -->
             <result type="json">
@@ -24,7 +24,7 @@
             </result>
         </action> 
         
-        <action name="getNewsListJson"  class="com.yangyujuan.action.NewsJsonAction" method="getNewsListJson">  
+        <action name="getNewsListJson" class="com.easy.finance.action.NewsJsonAction" method="getNewsListJson">
             <result name="fail"></result>
             <!-- 返回json类型数据 -->
             <result type="json">
@@ -32,39 +32,39 @@
             </result>
         </action> 
         
-        <action name="getSingleNewsJson"  class="com.yangyujuan.action.NewsJsonAction" method="getSingleNewsJson">  
+        <action name="getSingleNewsJson" class="com.easy.finance.action.NewsJsonAction" method="getSingleNewsJson">
             <result name="fail"></result>
             <result type="json">
                 <param name="root">result</param>
             </result>
         </action> 
         
-        <action name="getNewsPageCount"  class="com.yangyujuan.action.NewsJsonAction" method="getNewsPageCount">  
+        <action name="getNewsPageCount" class="com.easy.finance.action.NewsJsonAction" method="getNewsPageCount">
             <result name="fail"></result>
             <result type="json">
                 <param name="root">result</param>
             </result>
         </action> 
         
-        <action name="getSearchResult"  class="com.yangyujuan.action.NewsJsonAction" method="getSearchResult">  
+        <action name="getSearchResult" class="com.easy.finance.action.NewsJsonAction" method="getSearchResult">
             <result name="fail"></result>
             <result type="json">
                 <param name="root">result</param>
             </result>
         </action> 
         
-        <action name="indexSearch"  class="com.yangyujuan.action.NewsJsonAction" method="indexSearch">  
+        <action name="indexSearch" class="com.easy.finance.action.NewsJsonAction" method="indexSearch">
             <result name="list">search.jsp</result>
         </action> 
         
-        <action name="getHotWord"  class="com.yangyujuan.action.NewsJsonAction" method="getHotWord">  
+        <action name="getHotWord" class="com.easy.finance.action.NewsJsonAction" method="getHotWord">
             <result name="fail"></result>
             <result type="json">
                 <param name="root">result</param>
             </result>
         </action> 
         
-        <action name="updataHotWord"  class="com.yangyujuan.action.NewsJsonAction" method="updataHotWord">  
+        <action name="updataHotWord" class="com.easy.finance.action.NewsJsonAction" method="updataHotWord">
             <result name="fail"></result>
             <result type="json">
                 <param name="root">result</param>
@@ -77,26 +77,26 @@
     	
    		
     	<interceptors>
-    		<interceptor name="authority" class="com.yangyujuan.interceptor.LoginInterceptor">
+    		<interceptor name="authority" class="com.easy.finance.interceptor.LoginInterceptor">
     		</interceptor>
     	</interceptors>
     	<global-results>
     		<result name="error">../toutiao/adminlogin.jsp</result>
     	</global-results>
     
-    	<action name="adminIndex"  class="com.yangyujuan.action.AdminAction" method="adminIndex">  
+    	<action name="adminIndex" class="com.easy.finance.action.AdminAction" method="adminIndex">
             <result name="success">/admin/index.jsp</result>
             <interceptor-ref name="defaultStack"></interceptor-ref>
             <interceptor-ref name="authority"></interceptor-ref>
         </action> 
         
-    	<action name="modify"  class="com.yangyujuan.action.AdminAction" method="modify">  
+    	<action name="modify" class="com.easy.finance.action.AdminAction" method="modify">
             <result name="success">/admin/modify.jsp</result>
             <interceptor-ref name="defaultStack"></interceptor-ref>
             <interceptor-ref name="authority"></interceptor-ref>
         </action> 
         
-        <action name="delete"  class="com.yangyujuan.action.AdminAction" method="delete">  
+        <action name="delete" class="com.easy.finance.action.AdminAction" method="delete">
             <result name="fail"></result>
             <result type="json">
                 <param name="root">result</param>
@@ -105,14 +105,14 @@
             <interceptor-ref name="authority"></interceptor-ref>
         </action> 
         
-        <action name="detail"  class="com.yangyujuan.action.AdminAction" method="detail">  
+        <action name="detail" class="com.easy.finance.action.AdminAction" method="detail">
             <result name="success" >/admin/detail.jsp</result>
             <interceptor-ref name="defaultStack"></interceptor-ref>
             <interceptor-ref name="authority"></interceptor-ref>
         </action> 
         
         
-        <action name="updateNews"  class="com.yangyujuan.action.AdminAction" method="updateNews">  
+        <action name="updateNews" class="com.easy.finance.action.AdminAction" method="updateNews">
             <result name="fail"></result>
             <!-- 返回json类型数据 -->
             <result type="json">
@@ -122,18 +122,18 @@
             <interceptor-ref name="authority"></interceptor-ref>
         </action> 
         
-        <action name="login"  class="com.yangyujuan.action.AdminAction" method="login">  
+        <action name="login" class="com.easy.finance.action.AdminAction" method="login">
         	<result name="error" >../toutiao/adminlogin.jsp</result>
             <result name="success"  type="redirectAction">adminIndex</result>
         </action> 
         
-        <action name="spiderIndex"  class="com.yangyujuan.action.SpiderAction" method="spiderIndex">  
+        <action name="spiderIndex" class="com.easy.finance.action.SpiderAction" method="spiderIndex">
             <result name="success">/admin/spider.jsp</result>
             <interceptor-ref name="defaultStack"></interceptor-ref>
             <interceptor-ref name="authority"></interceptor-ref>
         </action> 
         
-        <action name="startSpider"  class="com.yangyujuan.action.SpiderAction" method="startSpider">  
+        <action name="startSpider" class="com.easy.finance.action.SpiderAction" method="startSpider">
             <result name="fail"></result>
             <!-- 返回json类型数据 -->
             <result type="json">
@@ -143,13 +143,13 @@
             <interceptor-ref name="authority"></interceptor-ref>
         </action> 
         
-        <action name="modifySpider"  class="com.yangyujuan.action.SpiderAction" method="modifySpider">  
+        <action name="modifySpider" class="com.easy.finance.action.SpiderAction" method="modifySpider">
             <result name="success">/admin/modSpider.jsp</result>
             <interceptor-ref name="defaultStack"></interceptor-ref>
             <interceptor-ref name="authority"></interceptor-ref>
         </action> 
         
-        <action name="updateSpider"  class="com.yangyujuan.action.SpiderAction" method="updateSpider">  
+        <action name="updateSpider" class="com.easy.finance.action.SpiderAction" method="updateSpider">
             <result name="fail"></result>
             <result type="json">
                 <param name="root">result</param>
@@ -158,7 +158,7 @@
             <interceptor-ref name="authority"></interceptor-ref>
         </action> 
         
-        <action name="addSpider"  class="com.yangyujuan.action.SpiderAction" method="addSpider">  
+        <action name="addSpider" class="com.easy.finance.action.SpiderAction" method="addSpider">
             <result name="fail"></result>
             <result type="json">
                 <param name="root">result</param>
@@ -167,7 +167,7 @@
             <interceptor-ref name="authority"></interceptor-ref>
         </action> 
         
-        <action name="deleteSpider"  class="com.yangyujuan.action.SpiderAction" method="deleteSpider">  
+        <action name="deleteSpider" class="com.easy.finance.action.SpiderAction" method="deleteSpider">
             <result name="fail"></result>
             <result type="json">
                 <param name="root">result</param>
