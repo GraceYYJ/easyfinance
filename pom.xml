@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.yangding.yangyujuan</groupId>
-  <artifactId>YangyujuanV1</artifactId>
+  <groupId>com.easy.finance</groupId>
+  <artifactId>easyfiance</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>YangyujuanV1 Maven Webapp</name>
+  <name>easyfinance Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
   
@@ -127,7 +127,7 @@
 
   </dependencies>
   <build>
-    <finalName>YangyujuanV1</finalName>
+    <finalName>easyfinance</finalName>
       <plugins>
           <plugin>
               <groupId>org.apache.maven.plugins</groupId>
