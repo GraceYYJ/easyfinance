@@ -70,12 +70,12 @@
         <div class="nav-title">
             <ul class="clearfix">
                 <li>
-                    <a class="navbtn" href="index.jsp">
+                    <a class="navbtn" href="toutiao/index.jsp">
                         <span>首页</span>
                     </a>
                 </li>
                 <li>
-                    <a class="navbtn" href="d3char.jsp">
+                    <a class="navbtn" href="toutiao/d3char.jsp">
                         <span>热词</span>
                     </a>
                 </li>

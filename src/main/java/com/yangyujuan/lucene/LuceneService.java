@@ -340,7 +340,7 @@ public class LuceneService {
                 }
             }
             JSONArray json = JSONArray.fromObject(termlist);
-        	hashmap.put("children", json);
+        	hashmap.put("children", json );
             jsonlist.add(hashmap);
             JSONArray jsonarry = JSONArray.fromObject(jsonlist);
             String filepath = "D:/programming/WorkplaceEclipseEE/YangyujuanV1/src/main/webapp/toutiao/flare5.json";
