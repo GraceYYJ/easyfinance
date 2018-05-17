@@ -22,7 +22,7 @@ public class NewsController {
     @Resource
     NewsService newsService;
     @RequestMapping("/index")
-    public ModelAndView allNews(HttpServletRequest request,Model model){
+    public ModelAndView getNewsListJson(HttpServletRequest request,Model model){
         List<News> news=new ArrayList<>();
         news=newsService.getAllNews();
         ModelAndView modelAndView=new ModelAndView();

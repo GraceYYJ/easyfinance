@@ -29,7 +29,7 @@ public class NewsDaoPipeline implements Pipeline{
         	strNewTime=String.format("%s年%s月%s日 %s:%s",  all.substring(0, 4) , all.substring(4, 6), all.substring(6, 8), "00", "00") ;
         }
         news.setPubTime(strNewTime);
-        
+		//在这里发布消息，数据库服务订阅并addnews，如果消费失败则清除消息
 		int iResultId = newsDao.addNews(news);
 		if(iResultId>0){
 			news.setId(iResultId);

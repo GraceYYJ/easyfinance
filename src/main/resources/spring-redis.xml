@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:redis="http://www.springframework.org/schema/redis"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/redis
+       http://www.springframework.org/schema/redis/spring-redis-1.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd"
+       default-autowire="byName">
+
+    <context:property-placeholder location="classpath:redis.properties" />
+
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxIdle" value="${redis.maxIdle}" />
+        <property name="maxTotal" value="${redis.maxTotal}" />
+        <property name="maxWaitMillis" value="${redis.maxWaitMillis}" />
+        <property name="testOnBorrow" value="${redis.testOnBorrow}" />
+    </bean>
+    <bean id="jedisConnectionFactory"
+          class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+          destroy-method="destroy">
+        <property name="poolConfig" ref="jedisPoolConfig"></property>
+        <property name="hostName" value="${redis.host}"></property>
+        <property name="port" value="${redis.port}"></property>
+        <property name="password" value="${redis.pass}"></property>
+    </bean>
+
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+        <property name="connectionFactory" ref="jedisConnectionFactory"></property>
+        <property name="defaultSerializer">
+            <bean class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
+        </property>
+    </bean>
+
+    <bean id="registerMessageListener" class="com.gc.biz.cache.listener.RegisterMessageListener">
+        <property name="redisTemplate" ref="redisTemplate"></property>
+    </bean>
+
+    <bean id="priDocMessageListener" class="com.gc.biz.cache.listener.PriDocRegActMsgListener">
+        <property name="redisTemplate" ref="redisTemplate"></property>
+    </bean>
+
+
+    <bean id="redisDAO" class="com.gc.biz.cache.impl.MessageDaoImpl">
+        <property name="redisTemplate" ref="redisTemplate" />
+    </bean>
+
+    <bean id="topicContainer"
+          class="org.springframework.data.redis.listener.RedisMessageListenerContainer"
+          destroy-method="destroy">
+        <property name="connectionFactory" ref="jedisConnectionFactory" />
+        <property name="taskExecutor">
+            <bean
+                    class="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler">
+                <property name="poolSize" value="3"></property>
+            </bean>
+        </property>
+        <property name="messageListeners">
+            <map>
+                <entry key-ref="registerMessageListener">
+                    <bean class="org.springframework.data.redis.listener.ChannelTopic">
+                        <constructor-arg value="coupon|redenvelop|notify|points" />
+                    </bean>
+                </entry>
+
+                <entry key-ref="priDocMessageListener">
+                    <bean class="org.springframework.data.redis.listener.ChannelTopic">
+                        <constructor-arg value="YZM|BG" />
+                    </bean>
+                </entry>
+
+            </map>
+        </property>
+    </bean>
+
+
+    <bean id="springContext" class="com.gc.biz.cache.util.SpringContextHolder" />
+    <bean id="doctorDAO" class="com.gc.biz.cache.impl.DoctorDAOImpl" >
+        <property name="redisTemplate" ref="redisTemplate" />
+    </bean>
+    <bean id="remindDAO" class="com.gc.biz.cache.impl.RemindDAOImpl" />
+    <bean id="userDAO" class="com.gc.biz.cache.impl.UserDAOImpl" />
+    <bean id="userDataDAO" class="com.gc.biz.cache.impl.UserDataDAOImpl" />
+</beans>

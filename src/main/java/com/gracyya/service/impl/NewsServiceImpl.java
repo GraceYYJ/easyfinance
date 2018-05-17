@@ -18,5 +18,5 @@ public class NewsServiceImpl implements NewsService{
     private NewsMapper newsMapper;
 
     public List getAllNews(){return newsMapper.getAllNews();}
-    public ArrayList<News> getNewsList(int pageNum){return newsMapper.getNewsList(pageNum);}
+    public ArrayList<News> getNewsList(int pageNum){return (ArrayList<News>)newsMapper.getNewsList(pageNum);}
 }
