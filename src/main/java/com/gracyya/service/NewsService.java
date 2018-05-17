@@ -1,5 +1,8 @@
 package com.gracyya.service;
 
+import com.gracyya.model.News;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,4 +10,5 @@ import java.util.List;
  */
 public interface NewsService {
     public List getAllNews();
+    public ArrayList<News> getNewsList(int pageNum);
 }

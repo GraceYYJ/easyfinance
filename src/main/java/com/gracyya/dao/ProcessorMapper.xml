@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gracyya.dao.ProcessorMapper" >
+  <resultMap id="BaseResultMap" type="com.gracyya.model.Processor" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="sitename" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="domain" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="starturl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="linkstr" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="bodytextstr" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pubtimestr" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sourcestr" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="titlestr" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="helpurlstr" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, sitename, domain, starturl, linkstr, bodytextstr, pubtimestr, sourcestr, titlestr, 
+    helpurlstr
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from Processor
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from Processor
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+  <insert id="insert" parameterType="com.gracyya.model.Processor" >
+    insert into Processor (id, sitename, domain, 
+      starturl, linkstr, bodytextstr, 
+      pubtimestr, sourcestr, titlestr, 
+      helpurlstr)
+    values (#{id,jdbcType=BIGINT}, #{sitename,jdbcType=VARCHAR}, #{domain,jdbcType=VARCHAR}, 
+      #{starturl,jdbcType=VARCHAR}, #{linkstr,jdbcType=VARCHAR}, #{bodytextstr,jdbcType=VARCHAR}, 
+      #{pubtimestr,jdbcType=VARCHAR}, #{sourcestr,jdbcType=VARCHAR}, #{titlestr,jdbcType=VARCHAR}, 
+      #{helpurlstr,jdbcType=VARCHAR})
+  </insert>
+
+  <update id="updateByPrimaryKey" parameterType="com.gracyya.model.Processor" >
+    update Processor
+    set sitename = #{sitename,jdbcType=VARCHAR},
+      domain = #{domain,jdbcType=VARCHAR},
+      starturl = #{starturl,jdbcType=VARCHAR},
+      linkstr = #{linkstr,jdbcType=VARCHAR},
+      bodytextstr = #{bodytextstr,jdbcType=VARCHAR},
+      pubtimestr = #{pubtimestr,jdbcType=VARCHAR},
+      sourcestr = #{sourcestr,jdbcType=VARCHAR},
+      titlestr = #{titlestr,jdbcType=VARCHAR},
+      helpurlstr = #{helpurlstr,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
