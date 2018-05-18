@@ -237,7 +237,7 @@
     
     function RefreshPage(pageNum) {
   	      $.ajax({  
-  	          url:'getNewsListJson.action',  //得到json格式的新闻列表
+  	          url:'getNewsListJson',  //得到json格式的新闻列表
   	          type:'post',  
   	          data:"pageNum=" + pageNum, 
   	          dataType:'json',  

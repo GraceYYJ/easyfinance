@@ -4,6 +4,7 @@ import com.gracyya.model.News;
 import com.gracyya.service.NewsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,9 +23,9 @@ public class NewsController {
     @Resource
     NewsService newsService;
     @RequestMapping("/index")
-    public ModelAndView getNewsListJson(HttpServletRequest request,Model model){
+    public ModelAndView getNewsListJson(Integer pageNum){
         List<News> news=new ArrayList<>();
-        news=newsService.getAllNews();
+        news=newsService.getNewsList(pageNum);
         ModelAndView modelAndView=new ModelAndView();
         modelAndView.setViewName("/toutiao/index");
         return modelAndView;
