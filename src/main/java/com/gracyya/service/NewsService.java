@@ -11,4 +11,5 @@ import java.util.List;
 public interface NewsService {
     public List getAllNews();
     public ArrayList<News> getNewsList(int pageNum);
+    public int getPageCount();
 }

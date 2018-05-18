@@ -177,7 +177,7 @@
  
 
     <script type="text/javascript">
-    //当前的页数
+    //当前页面数
     var gCurPageNum = 1;
     
     $(function () {
@@ -237,7 +237,7 @@
     
     function RefreshPage(pageNum) {
   	      $.ajax({  
-  	          url:'getNewsListJson.action',  //得到json格式的新闻列表
+  	          url:'/news/getNewsListJson',  //得到json格式的新闻列表
   	          type:'post',  
   	          data:"pageNum=" + pageNum, 
   	          dataType:'json',  
@@ -255,7 +255,7 @@
     var gPageCount ;
     function initPageCount(){
   	  $.ajax({  
-            url:'getNewsPageCount.action',  
+            url:'/news/getNewsPageCount',
             type:'post',  
             data:"{}", 
             dataType:'json',  

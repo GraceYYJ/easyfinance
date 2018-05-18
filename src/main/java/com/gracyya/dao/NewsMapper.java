@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Param;
 public interface NewsMapper {
     List<News> getAllNews();
     ArrayList<News> getNewsList(int pageNum);
+    int getPageCount();
     int deleteByPrimaryKey(Long id);
     int insert(News record);
     News selectByPrimaryKey(Long id);
