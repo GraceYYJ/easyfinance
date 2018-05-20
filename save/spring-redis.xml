@@ -15,17 +15,17 @@
 
     <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
         <property name="maxIdle" value="${redis.maxIdle}" />
-        <property name="maxTotal" value="${redis.maxTotal}" />
+<!--        <property name="maxTotal" value="${redis.maxTotal}" />
         <property name="maxWaitMillis" value="${redis.maxWaitMillis}" />
-        <property name="testOnBorrow" value="${redis.testOnBorrow}" />
+        <property name="testOnBorrow" value="${redis.testOnBorrow}" />-->
     </bean>
     <bean id="jedisConnectionFactory"
           class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
           destroy-method="destroy">
         <property name="poolConfig" ref="jedisPoolConfig"></property>
-        <property name="hostName" value="${redis.host}"></property>
+        <property name="hostName" value="${redis.hostName}"></property>
         <property name="port" value="${redis.port}"></property>
-        <property name="password" value="${redis.pass}"></property>
+        <property name="password" value="${redis.password}"></property>
     </bean>
 
     <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
@@ -35,7 +35,7 @@
         </property>
     </bean>
 
-    <bean id="registerMessageListener" class="com.gc.biz.cache.listener.RegisterMessageListener">
+<!--    <bean id="registerMessageListener" class="com.gc.biz.cache.listener.RegisterMessageListener">
         <property name="redisTemplate" ref="redisTemplate"></property>
     </bean>
 
@@ -83,5 +83,5 @@
     </bean>
     <bean id="remindDAO" class="com.gc.biz.cache.impl.RemindDAOImpl" />
     <bean id="userDAO" class="com.gc.biz.cache.impl.UserDAOImpl" />
-    <bean id="userDataDAO" class="com.gc.biz.cache.impl.UserDataDAOImpl" />
+    <bean id="userDataDAO" class="com.gc.biz.cache.impl.UserDataDAOImpl" />-->
 </beans>

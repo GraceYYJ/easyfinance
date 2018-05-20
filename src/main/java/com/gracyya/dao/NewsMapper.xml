@@ -41,9 +41,14 @@
     <include refid="Blob_Column_List" />
     from News
     order by pubTime
-    desc limit (${pageNum}-1)*10,10
+    desc limit ${pageNum},10
   </select>
-
+  <select id="getPageCount" resultType="java.lang.Integer">
+    select
+    count(*)
+    from
+    News
+  </select>
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />

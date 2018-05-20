@@ -11,7 +11,6 @@ import com.yangyujuan.jdbc.dao.factory.UserDaoFactory;
 import com.yangyujuan.jdbc.domain.News;
 import com.yangyujuan.jdbc.domain.Processor;
 import com.yangyujuan.jdbc.domain.User;
-import com.yangyujuan.spider.NewsSpider;
 import com.yangyujuan.spider.processor.NewsProcesser;
 
 public class NewsDaoTest {

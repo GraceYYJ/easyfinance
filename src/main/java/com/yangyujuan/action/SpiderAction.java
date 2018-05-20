@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.yangyujuan.spider.NewsSpider;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
@@ -20,7 +21,6 @@ import com.yangyujuan.jdbc.dao.factory.UserDaoFactory;
 import com.yangyujuan.jdbc.domain.News;
 import com.yangyujuan.jdbc.domain.Processor;
 import com.yangyujuan.jdbc.domain.User;
-import com.yangyujuan.spider.NewsSpider;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
