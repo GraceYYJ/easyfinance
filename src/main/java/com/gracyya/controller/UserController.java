@@ -14,7 +14,7 @@ import javax.annotation.Resource;
  * Created by Administrator on 2018/5/15.
  */
 @Controller
-@RequestMapping
+@RequestMapping("/admin")
 public class UserController {
     @Resource
     private UserService userService;
@@ -25,5 +25,11 @@ public class UserController {
         modelandview.addObject("user",user);
         modelandview.setViewName("/test/getUser");
         return modelandview;
+    }
+    @RequestMapping("/login")
+    public ModelAndView login(){
+        ModelAndView modelAndView=new ModelAndView();
+        modelAndView.setViewName("/toutiao/adminlogin");
+        return modelAndView;
     }
 }

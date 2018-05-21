@@ -7,11 +7,12 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface NewsMapper {
-    List<News> getAllNews();
-    ArrayList<News> getNewsList(int pageNum);
-    int getPageCount();
-    int deleteByPrimaryKey(Long id);
-    int insert(News record);
-    News selectByPrimaryKey(Long id);
-    int updateByPrimaryKey(News record);
+    public List<News> getAllNews();
+    public ArrayList<News> getNewsList(int pageNum);
+    public int getNewsCount();
+    public int getPageCount();
+    public News selectByPrimaryKey(Long id);
+    public int deleteByPrimaryKey(Long id);
+    public int insert(News record);
+    public int updateByPrimaryKey(News record);
 }

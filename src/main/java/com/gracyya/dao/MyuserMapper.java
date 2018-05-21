@@ -6,4 +6,6 @@ import org.apache.ibatis.annotations.Param;
 
 public interface MyuserMapper {
     Myuser selectByPrimaryKey(Long id);
+    Myuser selectByName(String name);
+    Myuser getPasswordByName(String name);
 }

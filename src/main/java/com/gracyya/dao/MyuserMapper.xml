@@ -19,5 +19,16 @@
     from myUser
     where id = #{id,jdbcType=BIGINT}
   </select>
-
+  <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List" />
+    from myUser
+    where name=#{name,jdbcType=VARCHAR}
+  </select>
+  <select id="getPasswordByName" resultType="java.lang.String" parameterType="java.lang.String">
+    select
+    password
+    from myUser
+    where name=#{name,jdbcType=VARCHAR}
+  </select>
 </mapper>

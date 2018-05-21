@@ -7,4 +7,6 @@ import com.gracyya.model.Myuser;
  */
 public interface UserService {
     public Myuser getUserById(Long id);
+    public Myuser getByName(String name);
+    public Myuser getPasswordByName(String name);
 }

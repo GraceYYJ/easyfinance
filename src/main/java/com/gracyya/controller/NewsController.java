@@ -34,7 +34,7 @@ public class NewsController {
         modelAndView.setViewName("/toutiao/index");
         return modelAndView;
     }
-    @RequestMapping("/getNewsListJson")
+    @RequestMapping(value = "/getNewsListJson",produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String getNewsListJson(@RequestParam("pageNum") Integer pageNum){
         int pageNum1=pageNum*10-10;
@@ -43,7 +43,7 @@ public class NewsController {
         String result = json.toString();
         return result;
     }
-    @RequestMapping("/getNewsPageCount")
+    @RequestMapping(value = "/getNewsPageCount")
     @ResponseBody
     public String getNewsPageCount(){
         int iPageCount=newsService.getPageCount();
@@ -53,4 +53,13 @@ public class NewsController {
         String result = json.toString();//给result赋值，传递给页面
         return result;
     }
+    @RequestMapping(value = "/getSingleNewsJson",produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    public String getSingleNewsJson(@RequestParam(value="newsid") Long id){
+        News news=newsService.selectByPrimaryKey(id);
+        JSONObject json=JSONObject.fromObject(news);
+        String result=json.toString();
+        return result;
+    }
+
 }

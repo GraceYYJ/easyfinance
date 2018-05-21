@@ -41,7 +41,13 @@
     <include refid="Blob_Column_List" />
     from News
     order by pubTime
-    desc limit ${pageNum},10
+    desc limit #{pageNum},10
+  </select>
+  <select id="getNewsCount" resultType="java.lang.Integer">
+    select
+    count(*)
+    from
+    News
   </select>
   <select id="getPageCount" resultType="java.lang.Integer">
     select
@@ -49,6 +55,7 @@
     from
     News
   </select>
+
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
@@ -64,10 +71,10 @@
   </delete>
 
   <insert id="insert" parameterType="com.gracyya.model.News" >
-    insert into News (id, title, source, 
+    insert into News (title, source,
       pubTime, visits, bodytext
       )
-    values (#{id,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, 
+    values (#{title,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR},
       #{pubtime,jdbcType=VARCHAR}, #{visits,jdbcType=BIGINT}, #{bodytext,jdbcType=LONGVARCHAR}
       )
   </insert>
@@ -78,6 +85,7 @@
       source = #{source,jdbcType=VARCHAR},
       pubTime = #{pubtime,jdbcType=VARCHAR},
       visits = #{visits,jdbcType=BIGINT}
+      bodytext=#{bodytext,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -14,10 +14,10 @@ import javax.annotation.Resource;
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
-    //@Resource
     private MyuserMapper myuserMapper;
-
     public Myuser getUserById(Long id){
         return myuserMapper.selectByPrimaryKey(id);
     }
+    public Myuser getByName(String name){return myuserMapper.selectByName(name);}
+    public Myuser getPasswordByName(String name){return myuserMapper.getPasswordByName(name);}
 }

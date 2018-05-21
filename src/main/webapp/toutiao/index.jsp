@@ -242,7 +242,7 @@
   	          data:"pageNum=" + pageNum, 
   	          dataType:'json',  
   	          success:function (resultlist) {  
-  	        	  var newslist = JSON.parse(resultlist);
+  	        	  var newslist = resultlist;
   	        	  //alert(newslist);
   	        	  //alert(resultlist);
   	        	  var vbody = getBody(newslist);
@@ -260,11 +260,11 @@
             data:"{}", 
             dataType:'json',  
             success:function (result) {  
-          	  gPageCount = JSON.parse(result)["pageCount"];
+          	  gPageCount = result.pageCount;
           	  $("#inputPageNum").attr("placeholder","共"+gPageCount+"页");
           	  //alert(result);
-          	  var vbody = getBody(newslist);
-          	  $("#pagelet-feedlist").html(vbody);
+          	  //var vbody = getBody(newslist);
+          	  //$("#pagelet-feedlist").html(vbody);
           	 // $("#ibody").children().remove();
           	  //$("#ibody").append(vbody);
             }  

@@ -66,13 +66,13 @@
 		var vNewsId = getNewsId();
 		//alert("vNewsId  "+vNewsId);
 		$.ajax({
-			url : 'getSingleNewsJson.action',
+			url : '/news/getSingleNewsJson',
 			type : 'post',
 			data : "newsid=" + vNewsId,
 			dataType : 'json',
 			success : function(result) {
 				// alert("result  "+ result);
-				var newslist = JSON.parse(result);
+				var newslist = result;
 				// alert("newslist  "+newslist);
 				// alert("resultlist  "+ result);
 				var vbody = getBody(newslist);

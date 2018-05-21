@@ -12,4 +12,9 @@ public interface NewsService {
     public List getAllNews();
     public ArrayList<News> getNewsList(int pageNum);
     public int getPageCount();
+    public int getNewsCount();
+    public News selectByPrimaryKey(Long id);
+    public int deleteByPrimaryKey(Long id);
+    public int insert(News record);
+    public int updateByPrimaryKey(News record);
 }
