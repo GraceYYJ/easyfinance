@@ -1,4 +1,4 @@
-﻿<%@ page language="java" import="java.util.*,com.yangyujuan.jdbc.domain.User" %> 
+﻿<%@ page language="java" import="java.util.*,com.gracyya.model.Myuser" %>
     <div id="wrapper">
     <div id="pagelet-nav" data-test="toutiao.com" style="box-shadow: 0 2px 0 rgba(7,103,200,.9);">
     <div class="nav-inner clearfix">
@@ -26,8 +26,8 @@
                 </li>
             </ul>
         </div>
-        <div style=“width:20px;height:50px;position:absolute;top:10px;right:120px;”>
-        <%  User obj = (User)session.getAttribute("user");%>
+        <div style="width:20px;height:50px;position:absolute;top:10px;right:120px;">
+        <% Myuser obj = (Myuser)session.getAttribute("user");%>
         	<label><%=obj.getName()%></label>
         	<span style="cursor:pointer;" onclick="exit()">注销</span>
         </div>
@@ -38,4 +38,5 @@
        function exit(){
     	   window.location.href = "../toutiao/index.jsp";
          } 
-   </script>
+  </script>
+</div>

@@ -223,7 +223,7 @@
     	  var vTitle = new Array();
           vTitle[0] = "id";
           vTitle[1] = "title";
-          vTitle[2] = "pubTime";
+          vTitle[2] = "pubtime";
           vTitle[3] = "source";
           vTitle[4] = "bodytext";
           vTitle[5] = "visits";

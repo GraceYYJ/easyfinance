@@ -98,7 +98,7 @@ h3{
 	
 	<div class="login-dialog-inner" data-node="inner">
 		<div class="login-pannel bottom-line">
-			<form method="POST"  action="../admin/login"  data-node="loginForm"> 
+			<form method="POST"  action="../admin/index"  data-node="loginForm">
 				<ul>
 					<li>
 						<div class="input-group">

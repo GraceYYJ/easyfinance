@@ -12,5 +12,5 @@
   }
   
   function Login() {
-      window.open('adminlogin.jsp',"_blank");
+      window.open(getRootPath() + "/admin/loginindex","_blank")
   }
