@@ -1,4 +1,4 @@
-﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page contentType="text/html; charset=UTF-8" isELIgnored="false" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!doctype html>
 	<link href="../js/umeditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
@@ -13,19 +13,19 @@
     <jsp:include page="header.jsp"></jsp:include>
 	<div align="center">
 		<label>标题：</label> 
-			<input id="title" class="modify" value="<s:property value="#news.title"/>"> 
+			<input id="title" class="modify" value=${news.title}>
 			</input></br> 
 		<label>来源：</label>
-			<input id="source" class="modify" value="<s:property value="#news.source"/>"> 
+			<input id="source" class="modify" value=${news.source}>
 			</input></br> 
 		<label>时间：</label>
-			<input id="time" class="modify" value="<s:property value="#news.pubTime"/>"> 
+			<input id="time" class="modify" value=${news.pubtime}>
 		</input>
 		<div id="newsid" style="display: none; ">
-			<s:property value="#news.id" escape="false" />
+			${news.id}
 		</div>
 		<div id="bodytext" style="display: none;">
-			<s:property value="#news.bodytext" escape="false" />
+			${news.bodytext}
 		</div>
 		<div style="margin-top: 10px;">
 			<script type="text/plain" id="myEditor" style="width: 1000px; height: 240px;">
@@ -143,7 +143,6 @@
         }
     }
     
-    
     function savaModify(){
     	var id = $("#newsid").text();
     	var title = $("#title").val();
@@ -151,7 +150,7 @@
     	var time = $("#time").val();
     	var bodytext = UM.getEditor('myEditor').getContent();
     	$.ajax({  
-	          url:'../admin/updateNews.action',  //得到json格式的新闻列表
+	          url:'../admin/modifyNews',  //得到json格式的新闻列表
 	          type:'post',  
 	          data:{
 	        	  id:id,
@@ -162,9 +161,9 @@
 	          },
 	          dataType:'json',  
 	          success:function (result) {  
-	        	  if(result=="success"){
+	        	  if(result==1){
 	        		  alert("保存成功");
-	        		  window.location.href = "detail.action?id="+id;
+	        		  window.location.href = "detail/"+id;
 	        	  }else{
 	        		  alert("保存失败");
 	        	  }

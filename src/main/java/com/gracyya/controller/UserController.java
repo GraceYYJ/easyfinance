@@ -63,19 +63,29 @@ public class UserController {
         return view;
     }
     @RequestMapping("/detail/{id}")
-    public ModelAndView updateNews(@PathVariable Long id,Model model){
+    public ModelAndView detail(@PathVariable Long id,Model model){
         News news=newsService.selectByPrimaryKey(id);
-        //ModelAndView modelandview =new ModelAndView();
-        //modelandview.addObject("news",news);
-        //modelandview.setViewName("/admin/detail");
         model.addAttribute("news", news);
         ModelAndView modelandview =new ModelAndView("/admin/detail");
         return modelandview;
     }
-
-
-
-
+    @RequestMapping("/modify/{id}")
+    public ModelAndView modifyindex(@PathVariable Long id,Model model){
+        News news=newsService.selectByPrimaryKey(id);
+        model.addAttribute("news", news);
+        ModelAndView modelandview =new ModelAndView("/admin/modify");
+        return modelandview;
+    }
+    @RequestMapping(value = "/modifyNews",produces = "text/html;charset=UTF-8")
+    public int modifyNews(@RequestParam("news") News news){
+        int result=newsService.updateByPrimaryKey(news);
+        return result;
+    }
+    @RequestMapping(value = "/delete")
+    public int delete(@RequestParam("id") Long id){
+        int result=newsService.deleteByPrimaryKey(id);
+        return result;
+    }
 
 
     public static HttpSession getSession() {

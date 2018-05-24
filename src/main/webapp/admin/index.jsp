@@ -56,7 +56,7 @@
         for (var vi = 0; vi < vLen; vi++) {
 
             //vBody += "<ul><li class='item' style=\"cursor:pointer;padding: 15px 0 15px;\" onclick=\"goNewsDetail('" + newslist[vi][vTitle[0]] + "')\"><div style=\"font-weight: 700;\">" + newslist[vi][vTitle[1]] + "</div><p style=\"height: 24.63px;\"><span class='other'>" + newslist[vi][vTitle[3]] + "</span><span class='footer-right'>" + newslist[vi][vTitle[2]] + "</span></p></li></ul>";
-            vBody += "<tr style=\"height:30px;\"><td style=\"width:500px;cursor: pointer;\" onclick=\"showDetail('"+ newslist[vi][vTitle[0]] +"')\"><span>" + newslist[vi][vTitle[1]] + " </span></td><td style=\"width:180px;\"> <span>"+ newslist[vi][vTitle[3]] +" </span></td><td style=\"width:200px;\"> <span>"+ newslist[vi][vTitle[2]] +" </span></td><td style=\"width: 60px;\"> <a class=\"btn\"  style=\"margin-left:20px;\" target=\"_blank\"  href=\"modify.action?id='"+ newslist[vi][vTitle[0]] +"'\">编辑</a></td><td style=\"width: 60px;\"><a class=\"btn\"  style=\"cursor:pointer;\" onclick=\"deleteNews('"+ newslist[vi][vTitle[0]] +"')\">删除</a></td></tr>"
+            vBody += "<tr style=\"height:30px;\"><td style=\"width:500px;cursor: pointer;\" onclick=\"showDetail('"+ newslist[vi][vTitle[0]] +"')\"><span>" + newslist[vi][vTitle[1]] + " </span></td><td style=\"width:180px;\"> <span>"+ newslist[vi][vTitle[3]] +" </span></td><td style=\"width:200px;\"> <span>"+ newslist[vi][vTitle[2]] +" </span></td><td style=\"width: 60px;\"> <a class=\"btn\"  style=\"margin-left:20px;\" target=\"_blank\"onclick=\"modifyNews('"+ newslist[vi][vTitle[0]] +"')\">编辑</a></td><td style=\"width: 60px;\"><a class=\"btn\"  style=\"cursor:pointer;\" onclick=\"deleteNews('"+ newslist[vi][vTitle[0]] +"')\">删除</a></td></tr>"
         }
         return vBody;
     }
@@ -133,6 +133,10 @@
         window.open("detail/"+id);
     }
 
+    function modifyNews(id) {
+        window.open("modify/"+id);
+    }
+
     function deleteNews(id) {
         var msg = "确认删除吗？";
         if (confirm(msg) == true) {
@@ -144,7 +148,11 @@
                 },
                 dataType: 'json',
                 success: function (result) {
-                    window.location.reload();
+                    if(result==1)
+                        window.location.reload();
+                        //window.location.href = "index";
+                    else
+                        alert('删除失败');
                 }
             });
         } else {
