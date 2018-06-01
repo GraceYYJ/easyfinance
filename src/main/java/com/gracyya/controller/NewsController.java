@@ -44,6 +44,7 @@ public class NewsController {
         return result;
     }
     @RequestMapping(value = "/getNewsPageCount")
+    @ResponseBody
     public String getNewsPageCount(){
         int iPageCount=newsService.getPageCount();
         Map<String,Integer> Page=new HashMap<String,Integer>();

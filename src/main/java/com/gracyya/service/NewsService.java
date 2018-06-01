@@ -17,4 +17,5 @@ public interface NewsService {
     public int deleteByPrimaryKey(Long id);
     public int insert(News record);
     public int updateByPrimaryKey(News record);
+    public int updateNews(Long id, String title, String source, String pubtime, String bodytext);
 }

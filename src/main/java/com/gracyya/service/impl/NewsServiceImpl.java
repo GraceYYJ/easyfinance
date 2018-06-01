@@ -26,4 +26,8 @@ public class NewsServiceImpl implements NewsService{
     public int deleteByPrimaryKey(Long id){return newsMapper.deleteByPrimaryKey(id);}
     public int insert(News record){return newsMapper.insert(record);}
     public int updateByPrimaryKey(News record){return newsMapper.updateByPrimaryKey(record);}
+    public int updateNews(Long id, String title, String source, String pubtime, String bodytext){
+        News news=new News(id,title,source,pubtime,1l,bodytext);
+        return newsMapper.updateByPrimaryKey(news);
+    }
 }

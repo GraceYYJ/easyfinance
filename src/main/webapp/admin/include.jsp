@@ -1,4 +1,4 @@
-﻿<%@ page language="java" import="java.util.*,com.yangyujuan.jdbc.domain.User" %> 
+﻿<%@ page language="java" import="java.util.*,com.gracyya.model.Myuser" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <head>

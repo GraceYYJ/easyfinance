@@ -84,7 +84,7 @@
     set title = #{title,jdbcType=VARCHAR},
       source = #{source,jdbcType=VARCHAR},
       pubTime = #{pubtime,jdbcType=VARCHAR},
-      visits = #{visits,jdbcType=BIGINT}
+      visits = #{visits,jdbcType=BIGINT},
       bodytext=#{bodytext,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>

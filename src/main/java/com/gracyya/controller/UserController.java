@@ -77,14 +77,16 @@ public class UserController {
         return modelandview;
     }
     @RequestMapping(value = "/modifyNews",produces = "text/html;charset=UTF-8")
-    public int modifyNews(@RequestParam("news") News news){
-        int result=newsService.updateByPrimaryKey(news);
-        return result;
+    @ResponseBody
+    public String modifyNews(Long id, String title, String source, String pubtime, String bodytext){
+        int result=newsService.updateNews(id,title,source,pubtime,bodytext);
+        return String.valueOf(result);
     }
     @RequestMapping(value = "/delete")
-    public int delete(@RequestParam("id") Long id){
+    @ResponseBody
+    public String delete(@RequestParam("id") Long id){
         int result=newsService.deleteByPrimaryKey(id);
-        return result;
+        return String.valueOf(result);
     }
 
 
