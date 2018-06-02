@@ -10,7 +10,7 @@
         <div class="nav-title" style="margin-left: 120px;">
             <ul class="clearfix">
                 <li>
-                    <a  class="navbtn" href="adminIndex">
+                    <a class="navbtn" href="index.jsp">
                         <span>后台首页</span>
                     </a>
                 </li>

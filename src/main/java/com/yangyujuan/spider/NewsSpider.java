@@ -1,7 +1,7 @@
 package com.yangyujuan.spider;
 
-import com.gracyya.spider.pipeline.NewsDaoPipeline;
-import com.gracyya.spider.processor.NewsProcesser;
+import com.yangyujuan.spider.pipeline.NewsDaoPipeline;
+import com.yangyujuan.spider.processor.NewsProcesser;
 import com.yangyujuan.jdbc.domain.Processor;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.pipeline.ConsolePipeline;

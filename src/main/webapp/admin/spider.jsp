@@ -1,5 +1,6 @@
-﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page contentType="text/html; charset=UTF-8" isELIgnored="false" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
 	<jsp:include page="include.jsp"></jsp:include>
@@ -30,58 +31,37 @@
 							</td>
 							<td></td>
 							<td></td>
-							<td>
-									<a id='addSpider'  style="margin-left:20px;cursor: pointer;color: rgb(7,103,200);"  target="_blank"  type="button"  href="" class="btn btn-default" >批量爬取</a>
-							</td>
 						</tr>
-						
-						<s:iterator value="list" id="list">
+						<c:forEach var="item" items="${processors}">
 							<tr style="height:30px;">
-								<td style="width:180px;cursor: pointer;" onclick="showDetail(<s:property value='#list.id' escape="false" />)">
+								<td style="width:180px;cursor: pointer;" onclick="showDetail(${item.id})">
 									<span>
-										<s:property value='#list.sitename' escape="false" />
+										${item.sitename}
 									</span>
 								</td>
 								<td style="width:200px;">
 									<span>
-										<s:property value='#list.domain' escape="false" />
+										${item.domain}
 									</span>
 								</td>
 								<td style="width:400px;">
 									<span>
-										<s:property value='#list.starturl' escape="false" />
+										${item.starturl}
 									</span>
 								</td>
 								<td style="width: 160px;">
-									<a class="btn"  style="margin-left:20px;cursor:pointer;"  onclick="startSpider(<s:property value='#list.id' />)">爬取</a>
-									<a class="btn"  href="modifySpider.action?id=<s:property value='#list.id' />">编辑</a>
-									<a class="btn"  style="cursor:pointer;" onclick="deleteSpider(<s:property value='#list.id' />)"/>删除</a>
+									<a class="btn"  style="margin-left:20px;cursor:pointer;"  onclick="startSpider(${item.id})">爬取</a>
+									<a class="btn"  href="modifySpider?id=${item.id}">编辑</a>
+									<a class="btn"  style="cursor:pointer;" onclick="deleteSpider(${item.id})"/>删除</a>
 								</td>
 							</tr>
-						</s:iterator>
-						
+						</c:forEach>
 						</tbody>
 					</table>
 				</div>
-
-				<div class="pagination pagination-centered">
-					<ul>
-						<li class="disabled" >
-						<a onclick='changePageNum(0)'>&laquo;</a></li>
-						<li class="active"><a id='currentPage'><s:property value="#gCurPageNum" /></a></li>
-						<li class="disabled" ><a onclick='changePageNum(1)'>&raquo;</a></li>
-					</ul>
-					<div>
-						<input id="hidPageCount" style="display:none" value="<s:property value="#iPageCount" />" ></input>
-						<input id='inputPageNum' type="text" style="width: 53px"
-							placeholder="共<s:property value="#iPageCount" />页" class="form-control"
-							aria-label="Amount (to the nearest dollar)">
-						<button id='btGo' type="button" onclick="goPage()"
-							class="btn btn-default" style="margin-top: -10px">Go</button>
-					</div>
-				</div>
 		</div>
 	</div>
+
     <jsp:include page="footer.jsp"></jsp:include>
     <script src="../js/jquery-ui.js"></script>
     <script src="../js/layer/layer.js"></script>
@@ -90,7 +70,7 @@
     function startSpider(id){
     	var myDialog = art.dialog("数据爬取中，请稍等。。。");
     	$.ajax({  
-	          url:'../admin/startSpider.action',  //得到json格式的新闻列表
+	          url:'../admin/startSpider',  //得到json格式的新闻列表
 	          type:'post',  
 	          data:{
 	        	  id:id
@@ -103,20 +83,7 @@
 	          }  
 	      });  
     }
-    
-    function startSpider2(id){
-    	$.ajax({  
-	          url:'../admin/startSpider.action',  //得到json格式的新闻列表
-	          type:'post',  
-	          data:{
-	        	  id:id
-	          },
-	          dataType:'json',  
-	          success:function (result) {  
-	        	  alert("新爬取"+result+"条新闻");
-	          }  
-	      });  
-    }
+
     
     function deleteSpider(id){
     	var msg = "确认删除吗？";

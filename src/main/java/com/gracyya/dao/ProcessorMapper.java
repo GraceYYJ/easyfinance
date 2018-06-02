@@ -8,5 +8,6 @@ public interface ProcessorMapper {
     int deleteByPrimaryKey(Long id);
     int insert(Processor record);
     Processor selectByPrimaryKey(Long id);
+    List<Processor> getAllProcessors();
     int updateByPrimaryKey(Processor record);
 }

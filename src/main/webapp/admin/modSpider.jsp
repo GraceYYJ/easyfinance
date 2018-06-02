@@ -1,4 +1,4 @@
-﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page contentType="text/html; charset=UTF-8" isELIgnored="false" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!doctype html>
 <html>
@@ -12,62 +12,62 @@
 				<tr>
 					<td>网站名：</td>
 					<td>
-							<input id="sitename" class="modify" value="<s:property value="#obj.sitename"/>"> </input>
+							<input id="sitename" class="modify" value=${processor.sitename}> </input>
 					</td>
 				</tr>
 				<tr>
 					<td>域名：</td>
 					<td>
-							<input id="domain" class="modify" value="<s:property value="#obj.domain"/>"> </input>
+							<input id="domain" class="modify" value=${processor.domain}> </input>
 					</td>
 				</tr>
 				<tr>
 					<td>起始页面：</td>
 					<td>
-							<input id="starturl" class="modify" value="<s:property value="#obj.starturl"/>"> </input>
+							<input id="starturl" class="modify" value=${processor.starturl}> </input>
 					</td>
 				</tr>
 				<tr>
 					<td>目标链接正则表达式：</td>
 					<td>
-							<input id="linkstr" class="modify" value="<s:property value="#obj.linkstr"/>"> </input>
+							<input id="linkstr" class="modify" value=${processor.linkstr}> </input>
 					</td>
 				</tr>
 				<tr>
 					<td>列表链接正则表达式：</td>
 					<td>
-							<input id="helpurlstr" class="modify" value="<s:property value="#obj.helpurlstr"/>"> </input>
+							<input id="helpurlstr" class="modify" value=${processor.helpurlstr}> </input>
 					</td>
 				</tr>
 				<tr>
 					<td>标题Xpath表达式：</td>
 					<td>
-							<input id="titlestr" class="modify" value="<s:property value="#obj.titlestr"/>"> </input>
+							<input id="titlestr" class="modify" value=${processor.titlestr}> </input>
 					</td>
 				</tr>
 				<tr>
 					<td>时间Xpath表达式：</td>
 					<td>
-							<input id="pubtimestr" class="modify" value="<s:property value="#obj.pubtimestr"/>"> </input>
+							<input id="pubtimestr" class="modify" value=${processor.pubtimestr}> </input>
 					</td>
 				</tr>
 				<tr>
 					<td>来源Xpath表达式：</td>
 					<td>
-							<input id="sourcestr" class="modify" value="<s:property value="#obj.sourcestr"/>"> </input>
+							<input id="sourcestr" class="modify" value=${processor.sourcestr}> </input>
 					</td>
 				</tr>
 				<tr>
 					<td>正文Xpath表达式：</td>
 					<td>
-							<input id="bodytextstr" class="modify" value="<s:property value="#obj.bodytextstr"/>"> </input>
+							<input id="bodytextstr" class="modify" value=${processor.bodytextstr}> </input>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 		
 		<div id="objId" style="display: none; ">
-			<s:property value="#obj.id" escape="false" />
+			${processor.id}
 		</div>
 		<div>
 			<input type="button"  class="yyjbtn" value="保存"  onclick="savaSpider()"/>
@@ -87,23 +87,23 @@
     	var bodytextstr = $("#bodytextstr").val();
     	var helpurlstr = $("#helpurlstr").val();
     	$.ajax({  
-	          url:'../admin/updateSpider.action',  //得到json格式的新闻列表
+	          url:'../admin/updateSpider',  //得到json格式的新闻列表
 	          type:'post',  
 	          data:{
-	        	  id:id,
+	        	  id:id.trim(),
 	        	  sitename:sitename, 
 	        	  domain:domain,
 	        	  starturl:starturl,
 	        	  linkstr:linkstr,
+                  helpurlstr:helpurlstr,
 	        	  titlestr:titlestr,
 	        	  pubtimestr:pubtimestr,
 	        	  sourcestr:sourcestr,
-	        	  bodytextstr:bodytextstr,
-	        	  helpurlstr:helpurlstr
+	        	  bodytextstr:bodytextstr
 	          },
 	          dataType:'json',  
 	          success:function (result) {  
-	        	  if(result=="success"){
+	        	  if(result==1){
 	        		  alert("保存成功");
 	        		  window.location.href = "spiderIndex";
 	        	  }else{

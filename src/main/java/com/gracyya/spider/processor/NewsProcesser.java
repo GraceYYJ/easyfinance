@@ -1,8 +1,8 @@
 package com.gracyya.spider.processor;
 
-import com.yangyujuan.jdbc.dao.NewsFilter;
-import com.yangyujuan.jdbc.domain.News;
-import com.yangyujuan.jdbc.domain.Processor;
+import com.gracyya.service.NewsFilter;
+import com.gracyya.model.News;
+import com.gracyya.model.Processor;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
@@ -31,7 +31,7 @@ public class NewsProcesser implements PageProcessor {
          
          News news = new News();
          news.setBodytext(page.getHtml().xpath(processor.getBodytextstr()).toString());
-         news.setPubTime(NewsFilter.getRightTime(page.getHtml().xpath(processor.getPubtimestr()).toString()));
+         news.setPubtime(NewsFilter.getRightTime(page.getHtml().xpath(processor.getPubtimestr()).toString()));
          news.setSource(page.getHtml().xpath(processor.getSourcestr()).toString());
          news.setTitle(page.getHtml().xpath(processor.getTitlestr()).toString());
          if (!NewsFilter.isRightNews(news)) {
