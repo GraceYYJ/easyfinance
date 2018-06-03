@@ -14,7 +14,7 @@ import java.util.List;
  */
 @Service
 public class NewsServiceImpl implements NewsService{
-    @Autowired
+    @Autowired(required=true)
     private NewsMapper newsMapper;
     private static final int PAGESIZE = 10;
 

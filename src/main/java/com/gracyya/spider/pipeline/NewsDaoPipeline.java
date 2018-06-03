@@ -3,6 +3,7 @@ package com.gracyya.spider.pipeline;
 import com.gracyya.lucene.LuceneService;
 import com.gracyya.service.NewsService;
 import com.gracyya.model.News;
+import org.springframework.stereotype.Service;
 import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.pipeline.Pipeline;
@@ -11,6 +12,7 @@ import javax.annotation.Resource;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@Service
 public class NewsDaoPipeline implements Pipeline{
 
 	private static LuceneService luceneservice = new LuceneService();

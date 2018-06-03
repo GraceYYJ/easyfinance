@@ -10,8 +10,10 @@
        http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
+    <import resource="spring-mybatis.xml"/>
+
     <!-- 扫描web相关的bean -->
-    <context:component-scan base-package="com.gracyya.controller"/>
+    <context:component-scan base-package="com.gracyya.controller,com.gracyya.service.impl,com.gracyya.spider.pipeline,com.gracyya.dao"/>
 
     <!-- 开启SpringMVC注解模式 -->
     <mvc:annotation-driven/>

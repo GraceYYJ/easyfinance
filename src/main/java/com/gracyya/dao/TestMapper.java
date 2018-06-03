@@ -7,6 +7,7 @@ import com.gracyya.service.ProcessorService;
 import com.gracyya.service.impl.NewsServiceImpl;
 import com.gracyya.service.impl.ProcessorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 

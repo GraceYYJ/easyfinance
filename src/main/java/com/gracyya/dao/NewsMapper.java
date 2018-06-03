@@ -5,6 +5,7 @@ import com.gracyya.model.News;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
 public interface NewsMapper {
     public List<News> getAllNews();

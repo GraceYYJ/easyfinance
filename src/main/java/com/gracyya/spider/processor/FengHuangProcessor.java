@@ -4,6 +4,7 @@ import com.gracyya.model.News;
 import com.gracyya.service.NewsFilter;
 import com.gracyya.spider.pipeline.NewsDaoPipeline;
 import com.gracyya.spider.pipeline.NewsDaoTestPipeline;
+import com.gracyya.util.BeanUtil;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
@@ -46,7 +47,8 @@ public class FengHuangProcessor implements PageProcessor {
 //             .addPipeline(new ConsolePipeline()).run();
     	//http://finance.ifeng.com/
     	//http://finance.ifeng.com/cmppdyn/756/665/1/dynlist.html
-    	 Spider.create(new FengHuangProcessor()).addUrl("http://finance.ifeng.com")
-    	 .addPipeline(new NewsDaoPipeline()).run();
+        NewsDaoPipeline newsDaoPipeline = BeanUtil.getBean(NewsDaoPipeline.class);
+        Spider.create(new FengHuangProcessor()).addUrl("http://finance.ifeng.com")
+    	 .addPipeline(newsDaoPipeline).run();
     }
 }
