@@ -1,8 +1,10 @@
 package com.gracyya.controller;
 
 import com.gracyya.lucene.LuceneService;
+import com.gracyya.model.Myuser;
 import com.gracyya.model.News;
 import com.gracyya.service.NewsService;
+import com.gracyya.service.UserService;
 import com.opensymphony.xwork2.ActionContext;
 import com.gracyya.model.ViewNews;
 import net.sf.json.JSONArray;
@@ -18,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,6 +30,8 @@ import java.util.Map;
 import net.sf.json.JSONObject;
 import net.sf.json.JSONArray;
 
+import static com.gracyya.controller.UserController.getSession;
+
 /**
  * Created by Administrator on 2018/5/16.
  */
@@ -35,6 +40,8 @@ import net.sf.json.JSONArray;
 public class NewsController {
     @Resource
     NewsService newsService;
+    @Resource
+    UserService userService;
 
     @RequestMapping("/index")
     public ModelAndView index() {
@@ -110,18 +117,52 @@ public class NewsController {
         modelAndView.setViewName("/toutiao/search");
         return modelAndView;
     }
-/*
 
+    @RequestMapping(value = "/hotwordindex")
+    public ModelAndView hotwordindex() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/toutiao/d3char");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/getHotWord",produces ="text/html;charset=UTF-8")
+    @ResponseBody
     public String getHotWord() {
+        String result="";
         try {
             LuceneService luceneservice = new LuceneService();
             result = luceneservice.getHotWordJson();//给result赋值，传递给页面
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return SUCCESS;
+        return result;
     }
-
+    //登录页面
+    @RequestMapping("/loginindex")
+    public ModelAndView loginindex(){
+        ModelAndView modelAndView=new ModelAndView();
+        modelAndView.setViewName("/toutiao/adminlogin");
+        return modelAndView;
+    }
+    //登录校验，成功后进入管理员首页（新闻管理页面）
+    @RequestMapping(value = "/login",produces = "text/html;charset=UTF-8")
+    public ModelAndView login(HttpServletRequest request){
+        String username = request.getParameter("username");// 接收id（通过页面输入框的name=id接收到）
+        String pwd = request.getParameter("password");// 接收pwd（通过页面输入框的name=pwd接收到）
+        Myuser user=userService.getByName(username);
+        String url;
+        HttpSession session = getSession();
+        if (user != null && pwd.equals(user.getPassword())) {
+            url = "/admin/index";
+            session.setAttribute("user", user);
+        } else {
+            url = "/toutiao/adminlogin";
+        }
+        ModelAndView view = new ModelAndView(url);
+        return view;
+    }
+    /*    @RequestMapping(value = "/updataHotWord")
+    @ResponseBody
     public String updataHotWord() {
         try {
             LuceneService luceneservice = new LuceneService();

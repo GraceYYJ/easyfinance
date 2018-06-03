@@ -1,4 +1,4 @@
-package com.gracyya.aspect;
+package com.gracyya.interceptor;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

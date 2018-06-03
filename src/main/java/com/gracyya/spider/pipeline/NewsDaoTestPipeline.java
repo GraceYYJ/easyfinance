@@ -1,6 +1,6 @@
 package com.gracyya.spider.pipeline;
 
-import com.yangyujuan.jdbc.domain.News;
+import com.gracyya.model.News;
 import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.pipeline.Pipeline;

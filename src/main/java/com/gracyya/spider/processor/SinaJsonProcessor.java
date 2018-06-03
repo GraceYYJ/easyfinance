@@ -1,8 +1,8 @@
 package com.gracyya.spider.processor;
 
+import com.gracyya.model.News;
+import com.gracyya.service.NewsFilter;
 import com.gracyya.spider.pipeline.NewsDaoPipeline;
-import com.yangyujuan.jdbc.dao.NewsFilter;
-import com.yangyujuan.jdbc.domain.News;
 import org.apache.commons.collections.CollectionUtils;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
@@ -41,7 +41,7 @@ public class SinaJsonProcessor implements PageProcessor {
         } else {
         	News news = new News();
              news.setBodytext(page.getHtml().xpath("//div[@id='artibody']").toString());
-             news.setPubTime(page.getHtml().xpath("//span[@class='time-source']/text()").toString());
+             news.setPubtime(page.getHtml().xpath("//span[@class='time-source']/text()").toString());
              news.setSource(page.getHtml().xpath("//span[@data-sudaclick='media_name']/a/text()").toString());
              news.setTitle(page.getHtml().xpath("//h1[@id='artibodyTitle']/text()").toString());
              if (!NewsFilter.isRightNews(news)) {

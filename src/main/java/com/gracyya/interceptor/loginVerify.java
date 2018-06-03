@@ -1,9 +1,8 @@
-package com.gracyya.aspect;
+package com.gracyya.interceptor;
 import com.gracyya.model.Myuser;
 import com.gracyya.service.UserService;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 

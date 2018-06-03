@@ -58,10 +58,10 @@
 				</div>
 				<div class="nav-title">
 					<ul class="clearfix">
-						<li><a class="navbtn" href="index.jsp"> 
+						<li><a class="navbtn" href="/toutiao/index.jsp">
 							<span>首页</span>
 						</a></li>
-						<li><a  class="navbtn" href="d3char.jsp">
+						<li><a  class="navbtn" href="/news/hotwordindex">
 							<span>热词</span>
 						</a></li>
 					</ul>

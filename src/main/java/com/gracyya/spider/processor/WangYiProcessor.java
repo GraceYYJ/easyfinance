@@ -1,8 +1,8 @@
 package com.gracyya.spider.processor;
 
+import com.gracyya.model.News;
+import com.gracyya.service.NewsFilter;
 import com.gracyya.spider.pipeline.NewsDaoPipeline;
-import com.yangyujuan.jdbc.dao.NewsFilter;
-import com.yangyujuan.jdbc.domain.News;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
@@ -26,7 +26,7 @@ public class WangYiProcessor implements PageProcessor {
         if(pubTime != null){
             pubTime=pubTime.trim().substring(0, 19);
             System.out.println(pubTime);
-            news.setPubTime(pubTime);
+            news.setPubtime(pubTime);
         }
        //news.setPubTime(page.getHtml().xpath("//div[@class='post_time_source']/text()").toString().trim().substring(0,19));
         news.setSource(page.getHtml().xpath("//a[@id='ne_article_source']/text()").toString());

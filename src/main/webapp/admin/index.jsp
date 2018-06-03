@@ -130,11 +130,11 @@
     }
 
     function showDetail(id) {
-        window.open("detail/"+id);
+        window.open("../admin/detail/"+id);
     }
 
     function modifyNews(id) {
-        window.open("modify/"+id);
+        window.open("../admin/modify/"+id);
     }
 
     function deleteNews(id) {

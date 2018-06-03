@@ -39,12 +39,13 @@
 	function getHotWordJson() {
 		var jResult;
 		$.ajax({
-			url : 'getHotWord.action',
+			url : '/news/getHotWord',
 			type : 'post',
 			data : "{}",
 			dataType : 'json',
 			success : function(result) {
-				jResult = JSON.parse(result);
+			    //jResult = JSON.parse(result);
+				jResult=result;
 				var node = svg.selectAll(".node").data(
 						bubble.nodes(classes(jResult)).filter(function(d) {
 							return !d.children;

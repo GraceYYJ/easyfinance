@@ -55,7 +55,7 @@
 
 <script src="../js/artDialog/jquery.artDialog.js?skin=common"></script>
 <script src="../js/artDialog/plugins/iframeTools.js"></script>
-<script type="text/javascript"  src="../js/yyj.js"></script>
+<!--<script type="text/javascript"  src="../js/yyj.js"></script>-->
 <link rel="stylesheet" type="text/css" href="../css/yyj.css">
 </head>
 <body class="night3">
@@ -70,12 +70,12 @@
         <div class="nav-title">
             <ul class="clearfix">
                 <li>
-                    <a class="navbtn" href="toutiao/index.jsp">
+                    <a class="navbtn" href="/toutiao/index.jsp">
                         <span>首页</span>
                     </a>
                 </li>
                 <li>
-                    <a class="navbtn" href="toutiao/d3char.jsp">
+                    <a class="navbtn" href="/news/hotwordindex">
                         <span>热词</span>
                     </a>
                 </li>
@@ -299,8 +299,12 @@
   		  alert("页码超出范围");
   	  }
     }
+    function Login() {
+        //window.open(getRootPath() + "/news/loginindex","_blank")
+        window.open("/news/loginindex","_blank")
+    }
     </script>
-    
+
 
 </body>
 </html>

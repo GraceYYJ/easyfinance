@@ -12,5 +12,6 @@
   }
   
   function Login() {
-      window.open(getRootPath() + "/admin/loginindex","_blank")
+      //window.open(getRootPath() + "/news/loginindex","_blank")
+      window.open("/news/loginindex","_blank")
   }

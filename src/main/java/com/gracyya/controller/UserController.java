@@ -47,30 +47,7 @@ public class UserController {
         modelandview.setViewName("/test/getUser");
         return modelandview;
     }
-    //登录页面
-    @RequestMapping("/loginindex")
-    public ModelAndView loginindex(){
-        ModelAndView modelAndView=new ModelAndView();
-        modelAndView.setViewName("/toutiao/adminlogin");
-        return modelAndView;
-    }
-    //登录校验，成功后进入管理员首页（新闻管理页面）
-    @RequestMapping(value = "/index",produces = "text/html;charset=UTF-8")
-    public ModelAndView login(HttpServletRequest request){
-        String username = request.getParameter("username");// 接收id（通过页面输入框的name=id接收到）
-        String pwd = request.getParameter("password");// 接收pwd（通过页面输入框的name=pwd接收到）
-        Myuser user=userService.getByName(username);
-        String url;
-        HttpSession session = getSession();
-        if (user != null && pwd.equals(user.getPassword())) {
-            url = "/admin/index";
-            session.setAttribute("user", user);
-        } else {
-            url = "/toutiao/adminlogin";
-        }
-        ModelAndView view = new ModelAndView(url);
-        return view;
-    }
+
     //新闻管理页面的新闻详情
     @RequestMapping("/detail/{id}")
     public ModelAndView detail(@PathVariable Long id,Model model){

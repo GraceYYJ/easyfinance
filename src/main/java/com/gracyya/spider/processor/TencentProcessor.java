@@ -1,8 +1,8 @@
 package com.gracyya.spider.processor;
 
+import com.gracyya.model.News;
+import com.gracyya.service.NewsFilter;
 import com.gracyya.spider.pipeline.NewsDaoPipeline;
-import com.yangyujuan.jdbc.dao.NewsFilter;
-import com.yangyujuan.jdbc.domain.News;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
@@ -23,7 +23,7 @@ public class TencentProcessor implements PageProcessor{
         News news = new News();
        // js_selection_area
         news.setBodytext(page.getHtml().xpath("//div[@id='Cnt-Main-Article-QQ']").toString());
-        news.setPubTime(page.getHtml().xpath("//span[@class='pubTime article-time']/text()").toString());
+        news.setPubtime(page.getHtml().xpath("//span[@class='pubTime article-time']/text()").toString());
         news.setSource(page.getHtml().xpath("//span[@class='where color-a-1']/a/text()").toString());
         news.setTitle(page.getHtml().xpath("//title/text()").toString());
         if (!newsFilter.isRightNews(news)) {
