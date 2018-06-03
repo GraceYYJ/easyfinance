@@ -97,9 +97,10 @@
     <div data-node="toolbarInner" class="inner" style="background: rgb(7,103,200);">
         <div class="toolbar-inner clearfix">
             <div data-node="searchBox" class="search-box">
-                <form action="indexSearch" method="get" data-node="searchForm" target="_blank">
+                <form action="/news/indexSearch" method="get" data-node="searchForm" target="_blank">
                     <div class="input-group clearfix" style="background-color: rgb(225, 234, 242);border: 1px solid rgb(4, 91, 178);">
-                        <input style="background-color: rgb(225, 234, 242);color:black" autocomplete="off" ga_event="nav_search_input" data-node="searchInput" name="keyword" type="text" placeholder="请输入搜索关键词" >
+                        <input style="background-color: rgb(225, 234, 242);color:black" autocomplete="off" ga_event="nav_search_input"
+                               data-node="searchInput" name="keyword" type="text" placeholder="请输入搜索关键词" >
                         <div class="btn-submit">
                             <button style="background-color: #0e78e7;" ga_event="nav_search" type="submit" href="javascript:;">
                                 <i class="icon icon-search icon-large"></i>

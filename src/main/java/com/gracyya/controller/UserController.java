@@ -111,6 +111,15 @@ public class UserController {
         modelAndView.addObject("processors",processors);
         return modelAndView;
     }
+    //添加爬虫
+    @RequestMapping(value = "/addSpider")
+    @ResponseBody
+    public String addSpider(String sitename, String domain, String starturl,
+                            String linkstr, String bodytextstr,String pubtimestr,
+                            String sourcestr, String titlestr, String helpurlstr){
+        int result=processorService.insert(sitename,domain,starturl,linkstr,bodytextstr,pubtimestr,sourcestr,titlestr,helpurlstr);
+        return String.valueOf(result);
+    }
     //点击爬虫修改
     @RequestMapping(value = "/modifySpider")
     public ModelAndView modifySpider(@RequestParam Long id,Model model){

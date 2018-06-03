@@ -70,11 +70,11 @@
     where id = #{id,jdbcType=BIGINT}
   </delete>
 
-  <insert id="insert" parameterType="com.gracyya.model.News" >
-    insert into News (title, source,
+  <insert id="insert" parameterType="com.gracyya.model.News" useGeneratedKeys="true" keyProperty="id">
+    insert into News (id,title, source,
       pubTime, visits, bodytext
       )
-    values (#{title,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR},
+    values (#{id,jdbcType=BIGINT},#{title,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR},
       #{pubtime,jdbcType=VARCHAR}, #{visits,jdbcType=BIGINT}, #{bodytext,jdbcType=LONGVARCHAR}
       )
   </insert>

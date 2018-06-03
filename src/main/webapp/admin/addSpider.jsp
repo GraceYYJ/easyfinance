@@ -1,4 +1,4 @@
-﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page contentType="text/html; charset=UTF-8" isELIgnored="false" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!doctype html>
 <html>
@@ -36,7 +36,7 @@
 				<tr>
 					<td>列表链接正则表达式：</td>
 					<td>
-							<input id="linkstr" class="modify" > </input>
+							<input id="helpurlstr" class="modify" > </input>
 					</td>
 				</tr>
 				<tr>
@@ -84,7 +84,7 @@
     	var bodytextstr = $("#bodytextstr").val();
     	var helpurlstr = $("#helpurlstr").val();
     	$.ajax({  
-	          url:'../admin/addSpider.action',  //得到json格式的新闻列表
+	          url:'../admin/addSpider',  //得到json格式的新闻列表
 	          type:'post',  
 	          data:{
 	        	  sitename:sitename, 
@@ -99,8 +99,9 @@
 	          },
 	          dataType:'json',  
 	          success:function (result) {  
-	        	  if(result=="success"){
+	        	  if(result==1){
 	        		  alert("添加成功");
+                      window.location.href = "spiderIndex";
 	        	  }else{
 	        		  alert("添加失败");
 	        	  }

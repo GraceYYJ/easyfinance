@@ -15,7 +15,8 @@ public interface NewsService {
     public int getNewsCount();
     public News selectByPrimaryKey(Long id);
     public int deleteByPrimaryKey(Long id);
-    public int insert(News record);
+    /*public int insert(String title, String source, String pubtime, String bodytext);*/
+    public Long insertNews(News news);
     public int updateByPrimaryKey(News record);
     public int updateNews(Long id, String title, String source, String pubtime, String bodytext);
 }

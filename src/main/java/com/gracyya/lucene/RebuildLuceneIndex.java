@@ -1,21 +1,20 @@
 package com.gracyya.lucene;
 
-import com.yangyujuan.jdbc.dao.NewsDao;
-import com.yangyujuan.jdbc.dao.factory.NewsDaoFactory;
-import com.yangyujuan.jdbc.domain.News;
+import com.gracyya.service.NewsService;
+import com.gracyya.model.News;
 
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by GraceYang on 2017/12/24.
  */
 public class RebuildLuceneIndex {
-    private NewsDao newsDao = NewsDaoFactory.getInstance().getDao();
+    NewsService newsService;
+    List<News> newsArrayList=newsService.getAllNews();
     private static LuceneService luceneservice = new LuceneService();
-    ArrayList<News> newsList = newsDao.getAllNewsList();
     public void rebuildLuceneIndex(){
-        Iterator<News> iterator = newsList.iterator();
+        Iterator<News> iterator = newsArrayList.iterator();
         while(iterator.hasNext()){
             News news=iterator.next();
             System.out.println("news: "+ news);

@@ -24,7 +24,17 @@ public class NewsServiceImpl implements NewsService{
     public int getNewsCount(){return newsMapper.getNewsCount();}
     public News selectByPrimaryKey(Long id){return newsMapper.selectByPrimaryKey(id);}
     public int deleteByPrimaryKey(Long id){return newsMapper.deleteByPrimaryKey(id);}
-    public int insert(News record){return newsMapper.insert(record);}
+/*    public Long insert(String title, String source, String pubtime, String bodytext){
+        News news=new News();
+        news.setTitle(title);
+        news.setSource(source);
+        news.setPubtime(pubtime);
+        news.setBodytext(bodytext);
+        return newsMapper.insert(news);
+    }*/
+    public Long insertNews(News news){
+        return newsMapper.insert(news);
+    }
     public int updateByPrimaryKey(News record){return newsMapper.updateByPrimaryKey(record);}
     public int updateNews(Long id, String title, String source, String pubtime, String bodytext){
         News news=new News(id,title,source,pubtime,1l,bodytext);

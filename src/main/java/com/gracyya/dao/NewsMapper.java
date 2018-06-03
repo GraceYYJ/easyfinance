@@ -13,6 +13,6 @@ public interface NewsMapper {
     public int getPageCount();
     public News selectByPrimaryKey(Long id);
     public int deleteByPrimaryKey(Long id);
-    public int insert(News record);
+    public Long insert(News record);
     public int updateByPrimaryKey(News record);
 }

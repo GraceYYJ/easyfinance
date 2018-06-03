@@ -1,9 +1,10 @@
-package com.yangyujuan.util;
+package com.gracyya.util;
+
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-import org.springframework.stereotype.Component;
 
 @Component("myPropertiesUtil")
 public class PropertiesUtil {
@@ -13,7 +14,7 @@ public class PropertiesUtil {
 		try {
 			properties=new Properties();
 			InputStream is = PropertiesUtil.class.getClassLoader()
-					.getResourceAsStream("dbcpconfig.properties");
+					.getResourceAsStream("jdbc.properties");
 			properties.load(is);
 		} catch (IOException e) {
 			e.printStackTrace();

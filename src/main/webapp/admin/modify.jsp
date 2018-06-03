@@ -133,6 +133,7 @@
         <input type="button" class="yyjbtn" value="保存" onclick="savaModify()"/>
     </div>
 </div>
+
 <jsp:include page="footer.jsp"></jsp:include>
 <script type="text/javascript">
     var um = UM.getEditor('myEditor');

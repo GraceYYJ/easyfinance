@@ -40,11 +40,11 @@
   </delete>
 
   <insert id="insert" parameterType="com.gracyya.model.Processor" >
-    insert into Processor (id, sitename, domain, 
+    insert into Processor (id, sitename, domain,
       starturl, linkstr, bodytextstr, 
       pubtimestr, sourcestr, titlestr, 
       helpurlstr)
-    values (#{id,jdbcType=BIGINT}, #{sitename,jdbcType=VARCHAR}, #{domain,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=BIGINT},#{sitename,jdbcType=VARCHAR}, #{domain,jdbcType=VARCHAR},
       #{starturl,jdbcType=VARCHAR}, #{linkstr,jdbcType=VARCHAR}, #{bodytextstr,jdbcType=VARCHAR}, 
       #{pubtimestr,jdbcType=VARCHAR}, #{sourcestr,jdbcType=VARCHAR}, #{titlestr,jdbcType=VARCHAR}, 
       #{helpurlstr,jdbcType=VARCHAR})

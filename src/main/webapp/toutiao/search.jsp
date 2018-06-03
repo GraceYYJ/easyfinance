@@ -1,5 +1,6 @@
-﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page contentType="text/html; charset=UTF-8" isELIgnored="false" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
 <head>
@@ -77,44 +78,44 @@
 					<div class="search-group clearfix">
 						<div class="search">
 							<input id="keyword" type="text" style="font-size: 15px;"
-								placeholder="请输入搜索关键词" value="<s:property value='#keyword'/>">
+								placeholder="请输入搜索关键词" value="${keyword}">
 						</div>
 						<div class="search-btn" onclick="Search()">搜索</div>
 					</div>
 					<h2>搜索结果：</h2>
 				</div>
 				<div id="pagelet-feedlist" style="font-size: 22px; color: #4f5157;">
-					<s:iterator value='list' id='list'>
+					<c:forEach var="item" items="${list}">
 						<ul>
 							<li class="item" style="cursor: pointer"
-								onclick="goNewsDetail(<s:property value='#list.id'/>)">
+								onclick="goNewsDetail(${item.id})">
 								<div>
-									<span><s:property value='#list.title' escape="false" /></span>
-									<span class='other' style="color:rgb(7,103,200);width: 88px;position: absolute;right: 0px;">[ 评分：<s:property value='#list.score' escape="false"  />&nbsp]</span>
+									<span>${item.title}</span>
+									<span class='other' style="color:rgb(7,103,200);width: 88px;position: absolute;right: 0px;">[ 评分：${item.score}&nbsp]</span>
 								</div>
-										<p>
-											<span class='other'><s:property value='#list.source' /></span>
-											<span class='footer-right'><s:property value='#list.pubTime' /></span>
-										</p>	
+								<p>
+									<span class='other'>${item.source}</span>
+									<span class='footer-right'>${item.pubtime}</span>
+								</p>
 							</li>
 						</ul>
-					</s:iterator>
+					</c:forEach>
 				</div>
 
 				<div class="pagination pagination-centered">
 					<ul>
 						<li class="disabled" >
 						<a onclick='changePageNum(0)' style="cursor:pointer;">&laquo;</a></li>
-						<li class="active"><a id='currentPage'><s:property value='#pagenum'/></a></li>
+						<li class="active"><a id='currentPage'>${pagenum}</a></li>
 						<li class="disabled" ><a onclick='changePageNum(1)' style="cursor:pointer;">&raquo;</a></li>
 					</ul>
 					<div>
 						<input id='inputPageNum' type="text" style="width: 53px"
-							placeholder="共<s:property value='#allPageNum'/>页" class="form-control"
+							placeholder="共${allPageNum}页" class="form-control"
 							aria-label="Amount (to the nearest dollar)">
 						<button id='btGo' type="button" onclick="goPage()"
 							class="btn btn-default" style="margin-top: -10px">Go</button>
-						<input id="allPageNum" value="<s:property value='#allPageNum'/>" style="display:none;" />
+						<input id="allPageNum" value="${allPageNum}" style="display:none;" />
 					</div>
 				</div>
 			</div>
@@ -196,11 +197,10 @@
 			  
 			  
 			  
-			  function Search() {
+			  function Search(){
 				  var keyword = $("#keyword").val();
-				  if(keyword==null||keyword==""||keyword==undefined){
-					  
-				  }else{
+				  if(keyword==null||keyword==""||keyword==undefined){}
+				  else{
 					  window.location.href = "indexSearch?keyword="+keyword+"&searchPagenum=1";
 				  }
 			  }
