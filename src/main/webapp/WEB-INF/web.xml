@@ -58,4 +58,15 @@
         <!-- 匹配*.do所有请求-->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+    <!-- 404错误拦截 -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error/error.jsp</location>
+    </error-page>
+    <!-- 500错误拦截 -->
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error/error.jsp</location>
+    </error-page>
 </web-app>

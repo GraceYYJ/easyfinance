@@ -55,7 +55,10 @@
     from
     News
   </select>
-
+  <select id="getNewsId" resultType="java.lang.Long" parameterType="java.lang.Long">
+    select
+    id
+  </select>
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
@@ -70,13 +73,17 @@
     where id = #{id,jdbcType=BIGINT}
   </delete>
 
-  <insert id="insert" parameterType="com.gracyya.model.News" useGeneratedKeys="true" keyProperty="id">
-    insert into News (id,title, source,
+  <insert id="insert" parameterType="com.gracyya.model.News" useGeneratedKeys="true">
+    insert into News (title, source,
       pubTime, visits, bodytext
       )
-    values (#{id,jdbcType=BIGINT},#{title,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR},
+    values (#{title,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR},
       #{pubtime,jdbcType=VARCHAR}, #{visits,jdbcType=BIGINT}, #{bodytext,jdbcType=LONGVARCHAR}
       )
+    <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">
+      SELECT 
+      LAST_INSERT_ID() AS id
+    </selectKey>
   </insert>
 
   <update id="updateByPrimaryKey" parameterType="com.gracyya.model.News" >

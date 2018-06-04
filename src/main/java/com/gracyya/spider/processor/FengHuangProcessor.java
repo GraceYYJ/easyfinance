@@ -9,6 +9,8 @@ import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
+import us.codecraft.webmagic.scheduler.QueueScheduler;
+import us.codecraft.webmagic.scheduler.component.BloomFilterDuplicateRemover;
 
 import java.util.List;
 
@@ -26,11 +28,17 @@ public class FengHuangProcessor implements PageProcessor {
         news.setPubtime(page.getHtml().xpath("//span[@class='ss01']/text()").toString());
         news.setSource(page.getHtml().xpath("//span[@class='ss03']/text()").toString());
         news.setTitle(page.getHtml().xpath("//title/text()").toString());
-        if (!newsFilter.isRightNews(news)) {
+/*        if (!newsFilter.isRightNews(news)) {
             //skip this page
             page.setSkip(true);
         }
-        page.putField("news",news);
+        page.putField("news",news);*/
+        if(newsFilter.isRightNews(news)){
+            page.putField("news",news);
+        }
+        else {
+            page.setSkip(true);
+        }
 //        page.putField("title", page.getHtml().xpath("//div[@class='BlogEntity']/div[@class='BlogTitle']/h1").toString());
 //        page.putField("content", page.getHtml().$("div.content").toString());
 //        page.putField("tags",page.getHtml().xpath("//div[@class='BlogTags']/a/text()").all());
@@ -48,7 +56,9 @@ public class FengHuangProcessor implements PageProcessor {
     	//http://finance.ifeng.com/
     	//http://finance.ifeng.com/cmppdyn/756/665/1/dynlist.html
         NewsDaoPipeline newsDaoPipeline = BeanUtil.getBean(NewsDaoPipeline.class);
-        Spider.create(new FengHuangProcessor()).addUrl("http://finance.ifeng.com")
-    	 .addPipeline(newsDaoPipeline).run();
+        Spider.create(new FengHuangProcessor()).
+                addUrl("http://finance.ifeng.com").
+                scheduler(new QueueScheduler().setDuplicateRemover(new BloomFilterDuplicateRemover(10000000))).
+                addPipeline(newsDaoPipeline).run();
     }
 }

@@ -23,9 +23,13 @@
 
     <mvc:interceptors>
         <mvc:interceptor>
-            <!-- 拦截所有URL中包含/user/的请求 -->
+            <!-- 拦截所有URL中包含/admin/的请求 -->
             <mvc:mapping path="/admin/**"/>
             <bean class="com.gracyya.interceptor.LoginInterceptor"></bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.gracyya.interceptor.ErrorInterceptor"></bean>
         </mvc:interceptor>
     </mvc:interceptors>
 
